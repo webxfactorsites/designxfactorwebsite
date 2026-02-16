@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DXF 30-Second Sizzle Reel — Storyboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0a0a0f;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  padding: 3rem 2rem;
+  border-bottom: 2px solid rgba(56,189,248,0.3);
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+
+.header h1 span {
+  background: linear-gradient(135deg, #38bdf8, #d946ef, #ff4d6d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header .meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.header .meta strong { color: #38bdf8; }
+
+/* ===== CONCEPT ===== */
+.concept {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.concept-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.concept-card h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.concept-card p {
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+
+.concept-card .tagline {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #d946ef;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-bar {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.timeline-visual {
+  display: flex;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.timeline-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+}
+
+.timeline-segment.hook { background: #ef4444; flex: 4; }
+.timeline-segment.break { background: #f59e0b; flex: 2; }
+.timeline-segment.transform { background: #10b981; flex: 14; }
+.timeline-segment.brand { background: #8b5cf6; flex: 7; }
+.timeline-segment.cta { background: #38bdf8; flex: 3; }
+
+.timeline-labels {
+  display: flex;
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.timeline-labels span { flex: 1; }
+
+/* ===== FRAMES ===== */
+.frames {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.beat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid;
+}
+
+.beat-header.hook { border-color: #ef4444; }
+.beat-header.break { border-color: #f59e0b; }
+.beat-header.transform { border-color: #10b981; }
+.beat-header.brand { border-color: #8b5cf6; }
+.beat-header.cta { border-color: #38bdf8; }
+
+.beat-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.beat-badge.hook { background: #ef4444; }
+.beat-badge.break { background: #f59e0b; }
+.beat-badge.transform { background: #10b981; }
+.beat-badge.brand { background: #8b5cf6; }
+.beat-badge.cta { background: #38bdf8; }
+
+.beat-header h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.beat-header .time {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Individual Frame */
+.frame {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.frame-visual {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.frame-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame-visual .placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.frame-visual .placeholder .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.5;
+}
+
+.frame-visual .timecode {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: rgba(0,0,0,0.8);
+  color: #38bdf8;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.frame-visual .frame-number {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0,0,0,0.8);
+  color: #d946ef;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.frame-details {
+  padding: 1.25rem 1.25rem 1.25rem 0;
+}
+
+.frame-details h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.detail-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.detail-label {
+  min-width: 70px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding-top: 0.15rem;
+}
+
+.detail-label.visual { color: #10b981; }
+.detail-label.audio { color: #f59e0b; }
+.detail-label.motion { color: #8b5cf6; }
+.detail-label.text { color: #38bdf8; }
+.detail-label.vo { color: #ff4d6d; }
+
+.detail-content {
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.detail-content em {
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.vo-line {
+  background: rgba(255,77,109,0.1);
+  border-left: 3px solid #ff4d6d;
+  padding: 0.4rem 0.75rem;
+  margin: 0.25rem 0;
+  border-radius: 0 4px 4px 0;
+  color: #fff;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* ===== AUDIO SECTION ===== */
+.audio-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.audio-section h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f59e0b;
+}
+
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.audio-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.audio-card h4 {
+  color: #f59e0b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.audio-card .description {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.audio-card audio {
+  width: 100%;
+  height: 36px;
+}
+
+.audio-card .status {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.audio-card .status.ready { background: rgba(16,185,129,0.2); color: #10b981; }
+.audio-card .status.pending { background: rgba(245,158,11,0.2); color: #f59e0b; }
+
+/* ===== PRODUCTION NOTES ===== */
+.production {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.production h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #d946ef;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.prod-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.prod-card h3 {
+  color: #d946ef;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.prod-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.prod-card li {
+  padding: 0.3rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.prod-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d946ef;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #475569;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .frame {
+    grid-template-columns: 1fr;
+  }
+  .frame-details {
+    padding: 1.25rem;
+  }
+  .header .meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+@media print {
+  body { background: #fff; color: #1e293b; }
+  .header { background: #1e293b; }
+  .frame { border: 1px solid #e2e8f0; page-break-inside: avoid; }
+  .frame-visual .placeholder { background: #f1f5f9; }
+  .beat-header { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <h1>Design X Factor — <span>30s Sizzle Reel</span></h1>
+  <p style="color: #94a3b8; margin-top: 0.5rem; font-size: 1.1rem; font-weight: 300;">
+    "When The Design Is Right"
+  </p>
+  <div class="meta">
+    <span><strong>Duration:</strong> 30 seconds</span>
+    <span><strong>Format:</strong> 16:9 (1920x1080) + 9:16 (1080x1920)</span>
+    <span><strong>Voice:</strong> MaleArcher (British)</span>
+    <span><strong>Mood:</strong> Punchy, Cinematic, Provocative</span>
+  </div>
+</div>
+
+<!-- ===== CONCEPT ===== -->
+<div class="concept">
+  <div class="concept-card">
+    <h2>Creative Concept</h2>
+    <p>
+      The video opens in a world everyone recognizes — the dull, lifeless corporate training everyone has endured.
+      Gray screens, bullet points, forced clicking. Then it <em style="color:#ff4d6d">breaks</em>. The screen
+      glitches, shatters, and through the cracks, color bleeds in. We enter the DXF world — immersive,
+      interactive, alive. The contrast sells itself. The viewer feels the difference before a single word is spoken.
+    </p>
+    <p>
+      A confident British male voice (MaleArcher) narrates the full 30 seconds — guiding the viewer
+      from problem to transformation to brand. The narration and visuals work together throughout.
+      Every frame earns its place.
+    </p>
+    <p class="tagline">"You have the expertise. We create the experience."</p>
+  </div>
+</div>
+
+<!-- ===== FULL AUDIO TRACK ===== -->
+<div style="max-width:900px; margin:2rem auto; padding:0 2rem;">
+  <div style="background:rgba(255,77,109,0.08); border:1px solid rgba(255,77,109,0.25); border-radius:1rem; padding:1.5rem 2rem;">
+    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.75rem;">
+      <span style="background:#ff4d6d; color:#fff; padding:0.2rem 0.75rem; border-radius:999px; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Full 30s Narration</span>
+      <span style="color:#94a3b8; font-size:0.85rem;">Complete voiceover — play while scrolling through the storyboard</span>
+    </div>
+    <audio controls src="audio/master-vo-30s.mp3" style="width:100%; height:40px;"></audio>
+    <p style="color:#94a3b8; font-size:0.85rem; margin-top:0.75rem; line-height:1.7; font-style:italic;">
+      "Most training is built to check a box. Not to change behavior. Seventy percent? Forgotten in a day.
+      What if training was something people actually remembered? We fuse instructional design, UX, and AI
+      to create experiences that are immersive, accessible, and measurable. From blueprint to delivery.
+      Analytics that prove results. You have the expertise. We create the experience. Design X Factor."
+    </p>
+  </div>
+</div>
+
+<!-- ===== TIMELINE BAR ===== -->
+<div class="timeline-bar">
+  <div class="timeline-visual">
+    <div class="timeline-segment hook">HOOK</div>
+    <div class="timeline-segment break">BREAK</div>
+    <div class="timeline-segment transform">TRANSFORMATION</div>
+    <div class="timeline-segment brand">BRAND</div>
+    <div class="timeline-segment cta">CTA</div>
+  </div>
+  <div class="timeline-labels">
+    <span>0:00</span>
+    <span style="flex:0.5;text-align:center">0:04</span>
+    <span style="flex:2;text-align:center">0:06 ——————— 0:20</span>
+    <span style="flex:1;text-align:center">0:27</span>
+    <span style="text-align:right">0:30</span>
+  </div>
+</div>
+
+<!-- ===== FRAMES ===== -->
+<div class="frames">
+
+  <!-- ==================== BEAT 1: THE HOOK ==================== -->
+  <div class="beat-header hook">
+    <span class="beat-badge hook">Beat 1</span>
+    <h2>The Hook — "The Problem"</h2>
+    <span class="time">0:00 — 0:04</span>
+  </div>
+
+  <!-- Frame 1 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F01-dull-slideshow.png" alt="Boring corporate slideshow — gray, lifeless, clip art">
+      <span class="timecode">0:00 — 0:02</span>
+      <span class="frame-number">F01</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Dull Slideshow</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          A corporate training screen fills the frame. <em>Bullet points</em>, clip art, stock photos of
+          people in suits shaking hands. A progress bar at 3%. Everything is desaturated — grays, muted blues.
+          Feels painfully familiar. The screen looks like every mandatory training module ever made.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"Most training is built to check a box. Not to change behavior."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Low ambient hum under the VO. Subdued, tense. The voice is calm but pointed.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Static screen with a blinking cursor. Minimal animation — slide transitions are basic fades. Camera slowly pushes in.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 2 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F02-disengaged-learner.png" alt="Disengaged learner clicking Next mindlessly">
+      <span class="timecode">0:02 — 0:03.5</span>
+      <span class="frame-number">F02</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Disengaged Learner</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          Quick cuts (0.5s each): A hand clicking <em>"Next"</em> repeatedly. A person yawning.
+          Eyes glazing over. Someone checking their phone under the desk. A progress bar barely moving.
+          <em>Everything screams disengagement.</em>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Rapid <em>mouse clicks</em> — each click lands on beat. Mechanical. Repetitive.
+          Subtle ticking clock in background.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Fast cuts synced to click sounds. Each cut is harder than the last. Building frustration.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 3 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x26A0;&#xFE0F;</div>
+        <div>FREEZE FRAME + stat<br><em style="color:#ef4444">"70% forgotten in 24 hours"</em></div>
+      </div>
+      <span class="timecode">0:03.5 — 0:04</span>
+      <span class="frame-number">F03</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Stat Punch</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          <em>FREEZE FRAME</em> on the bored face. Color drains further — almost black and white.
+          Text SLAMS onto screen in bold, oversized typography:
+          <em>"70% forgotten in 24 hours."</em>
+          Text is white, no decoration. Pure impact.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"Seventy percent? Forgotten in a day."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Hard <em>bass hit</em> on "forgotten." Punctuates the stat.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label text">Text</span>
+        <span class="detail-content">
+          "70% forgotten in 24 hours." — Large, centered, white on dark.
+          Typography: Inter 900 or similar heavy weight. Kerned tight.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Text slams in from bottom — hits and stops. No bounce, no ease-out. Hard stop.
+          0.5 second hold. Then the break begins.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BEAT 2: THE BREAK ==================== -->
+  <div class="beat-header break">
+    <span class="beat-badge break">Beat 2</span>
+    <h2>The Break — "The Pivot"</h2>
+    <span class="time">0:04 — 0:06</span>
+  </div>
+
+  <!-- Frame 4 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F04-glitch-moment.png" alt="Screen glitches and shatters — digital distortion, RGB split">
+      <span class="timecode">0:04 — 0:05</span>
+      <span class="frame-number">F04</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Glitch</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          The boring slideshow <em>GLITCHES</em> — screen tears, static, RGB color split.
+          Digital noise corrupts the image. Then it <em>SHATTERS</em> like glass — shards
+          of the old training fall away from camera, revealing darkness and then... light.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          <em>Digital glitch/distortion</em> sound (electric crackle). Then <em>glass shatter</em> — sharp, satisfying.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          The glitch is 0.5s. The shatter is 0.5s. Glass fragments have slight physics — they fall and fade.
+          Camera pushes forward THROUGH the broken screen into the new world.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 5 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F05-color-emergence.png" alt="Color bleeds in through cracks — teal and orange glow emerging">
+      <span class="timecode">0:05 — 0:06</span>
+      <span class="frame-number">F05</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Emergence</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          Through the shattered screen, <em>color bleeds in</em> — teal (#0D9488), orange (#F97316),
+          warm light. Particles of light float upward. The camera pushes through into a new space.
+          Everything shifts from cold gray to warm, vibrant, alive.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          <em>MUSIC DROPS IN</em> — driving, modern electronic beat. Confident, forward-moving.
+          Think Labrinth / ODESZA cinematic. BPM ~100-110. Not frantic — powerful.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Smooth camera push-through. Light particles drift upward. Color saturation ramps up over 1 second.
+          This is the moment the viewer's brain switches from "dull" to "what is this?"
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BEAT 3: TRANSFORMATION ==================== -->
+  <div class="beat-header transform">
+    <span class="beat-badge transform">Beat 3</span>
+    <h2>The Transformation — "The Showcase"</h2>
+    <span class="time">0:06 — 0:20</span>
+  </div>
+
+  <!-- Frame 6 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F06-beautiful-dashboard.png" alt="Beautiful learning dashboard — dark UI, glowing accents">
+      <span class="timecode">0:06 — 0:08</span>
+      <span class="frame-number">F06</span>
+    </div>
+    <div class="frame-details">
+      <h3>The DXF Dashboard</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          A sleek, <em>interactive learning dashboard</em> materializes — 3D parallax layers assembling.
+          Dark UI with glowing teal and orange accents. Glass cards. Beautiful typography.
+          This should look like the DXF prospectus interactive page — premium, immersive, modern.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"What if training was something people actually remembered?"</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Music continues building. The tone shifts — this is the question that reframes everything.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Dashboard elements assemble piece by piece — cards slide in, data populates, progress rings animate.
+          Smooth, premium motion. Like an Apple product reveal.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 7 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F07-engaged-learner.png" alt="Engaged learner leaning in — interactive module on screen">
+      <span class="timecode">0:08 — 0:10</span>
+      <span class="frame-number">F07</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Engaged Learner</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          A learner <em>leaning IN</em> to their screen — the opposite of Frame 2. Genuinely engaged.
+          On screen: branching scenarios, drag-and-drop activities, video embedded seamlessly, interactive elements.
+          The UI is beautiful. The content is alive.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"We fuse instructional design, UX, and AI to create experiences that are immersive, accessible, and measurable."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Camera slowly orbits around the learner, revealing the screen content. Depth of field keeps learner
+          slightly soft, screen content sharp. The content IS the star.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 8 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x2194;&#xFE0F;</div>
+        <div>SPLIT SCREEN: Before | After<br><em style="color:#10b981">Gray slides vs immersive experience</em></div>
+      </div>
+      <span class="timecode">0:10 — 0:12</span>
+      <span class="frame-number">F08</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Before/After Split</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          <em>SPLIT SCREEN</em> sliding left to right. LEFT: gray, boring, bullet-point slide.
+          RIGHT: the same content transformed into an immersive interactive experience — animations,
+          illustrations, clean design, interactive elements.
+          The RIGHT side <em>EXPANDS</em> and pushes the left completely off screen.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Music beat intensifies. <em>Synth swell</em> as the right side takes over.
+          A satisfying "whoosh" as the split slides.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          The divider line slides from center to left edge over 1.5 seconds. The "after" side is alive
+          with micro-animations. The "before" side is static, dead.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 9 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F09-mobile-learning.png" alt="Mobile learning experience — rapid montage shot">
+      <span class="timecode">0:12 — 0:15</span>
+      <span class="frame-number">F09</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Capability Montage</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          RAPID MONTAGE — 0.5s per shot, synced to music beats:<br>
+          1. <em>Phone</em> showing mobile-responsive course<br>
+          2. <em>Analytics dashboard</em> with engagement metrics climbing<br>
+          3. <em>Learner</em> completing a scenario-based quiz, smiling<br>
+          4. <em>Accessibility</em> icon — WCAG compliance visual<br>
+          5. <em>SCORM export</em> flying into an LMS interface<br>
+          6. <em>AI-enhanced</em> content generation — human reviewing AI output
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"From blueprint to delivery. Analytics that prove results."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Each shot cuts on a music beat. Hard cuts — no transitions. Each frame is perfectly composed
+          for its 0.5s of screen time. Energy peaks.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 10 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F10-blueprint-to-product.png" alt="Blueprint transforming to final product — fast-forward construction">
+      <span class="timecode">0:15 — 0:17</span>
+      <span class="frame-number">F10</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Methodology — From Blueprint to Product</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          Overhead shot: a <em>wireframe/blueprint</em> of a course layout — line drawings, annotations, structure.
+          In fast-forward, it transforms into a polished, final interactive product. Like watching
+          architecture being built at 100x speed. Represents the DXF 9-phase methodology.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Mechanical/digital textures under the music. Satisfying clicks and snaps as pieces lock together.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Top-down camera. Lines draw themselves. Boxes fill with color. Images populate. Text flows in.
+          2 seconds from wireframe to finished product.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 11 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F11-human-ai-collab.png" alt="Human plus AI collaboration — designer reviewing, AI generating">
+      <span class="timecode">0:17 — 0:19</span>
+      <span class="frame-number">F11</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Craft — Human + AI</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          Close-up sequence: Hands on keyboards. A design artboard. <em>AI tools generating</em> content assets.
+          A human designer <em>reviewing, refining, approving</em>. Quick flash of code.
+          This shows the craft — AI amplifies, humans decide.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"You have the expertise. We create the experience."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Quick cuts (0.75s each). Shallow depth of field. Macro-style close-ups. Warm lighting.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 12 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <img src="frames/F12-analytics-rising.png" alt="Analytics dashboard — 34 to 94 percent completion, numbers animate up">
+      <span class="timecode">0:19 — 0:20</span>
+      <span class="frame-number">F12</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Results</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          An analytics screen: completion rate counter <em>jumping from 34% to 94%</em>.
+          Engagement graph spiking upward. Knowledge retention indicator glowing green.
+          Numbers animate fast — satisfying countup.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Music hits a <em>PEAK</em>. Big orchestral/synth swell. This is the emotional climax.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Numbers count up with satisfying motion blur. Graph lines draw in real-time.
+          Camera slowly pulls back to reveal full dashboard.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BEAT 4: THE BRAND ==================== -->
+  <div class="beat-header brand">
+    <span class="beat-badge brand">Beat 4</span>
+    <h2>The Brand — "The Thesis"</h2>
+    <span class="time">0:20 — 0:27</span>
+  </div>
+
+  <!-- Frame 13 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x1F4AC;</div>
+        <div>Kinetic typography<br><em style="color:#8b5cf6">"You have the expertise."</em></div>
+      </div>
+      <span class="timecode">0:20 — 0:22</span>
+      <span class="frame-number">F13</span>
+    </div>
+    <div class="frame-details">
+      <h3>Line 1 — The Acknowledgment</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          <em>CLEAN BLACK SCREEN.</em> Kinetic typography animates in, word by word, synced to VO.
+          Each word appears with a subtle light pulse. White text on black.
+          Clean. Simple. Powerful.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"You have the expertise."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Music pulls back — minimal. Just a sustained pad. The voice is front and center.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 14 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x2728;</div>
+        <div>Text transforms, particles<br><em style="color:#8b5cf6">"We create the experience."</em></div>
+      </div>
+      <span class="timecode">0:22 — 0:24</span>
+      <span class="frame-number">F14</span>
+    </div>
+    <div class="frame-details">
+      <h3>Line 2 — The Promise</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          Previous text dissolves into <em>particles</em>. New words form from those particles:
+          <em>"We create the experience."</em> The word "experience" is slightly larger,
+          carrying the weight. Subtle teal and purple color on "experience."
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label vo">VO</span>
+        <span class="detail-content">
+          <div class="vo-line">"We create the experience."</div>
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          Particle dissolve transition. Old text breaks apart into light particles that reform as new text.
+          Takes ~0.5s for transition. Beautiful, physical, satisfying.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frame 15 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x2716;&#xFE0F;</div>
+        <div>The "X" becomes DXF logo<br><em style="color:#8b5cf6">Teal + Orange brand colors arrive</em></div>
+      </div>
+      <span class="timecode">0:24 — 0:27</span>
+      <span class="frame-number">F15</span>
+    </div>
+    <div class="frame-details">
+      <h3>The Brand Reveal</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          The "X" in "experience" <em>grows and transforms</em> — it becomes the DXF "X" logomark.
+          Colors shift from white to <em>brand teal (#0D9488) and orange (#F97316)</em>.
+          Full wordmark materializes: <strong>DESIGN X FACTOR</strong>.
+          Below: <em>"Where Learning Meets Design"</em> fades in.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Music resolves — a <em>warm, satisfying chord</em>. Feels like arrival. Like landing after a jump.
+          A soft "lock-in" sound as the logo settles — like a puzzle piece clicking into place.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          The X scales up to ~3x, rotates slightly, then settles into position. Remaining text appears
+          around it. Smooth ease-out. Premium. No overshoot.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BEAT 5: CTA ==================== -->
+  <div class="beat-header cta">
+    <span class="beat-badge cta">Beat 5</span>
+    <h2>The CTA — "The Close"</h2>
+    <span class="time">0:27 — 0:30</span>
+  </div>
+
+  <!-- Frame 16 -->
+  <div class="frame">
+    <div class="frame-visual">
+      <div class="placeholder">
+        <div class="icon">&#x1F310;</div>
+        <div>designxfactor.com<br><em style="color:#38bdf8">Logo + URL + heartbeat pulse</em></div>
+      </div>
+      <span class="timecode">0:27 — 0:30</span>
+      <span class="frame-number">F16</span>
+    </div>
+    <div class="frame-details">
+      <h3>The URL + Close</h3>
+      <div class="detail-row">
+        <span class="detail-label visual">Visual</span>
+        <span class="detail-content">
+          URL fades in below the logo: <em>designxfactor.com</em>
+          The "X" in the logo <em>pulses once</em> — like a heartbeat. Alive.
+          Hold for 2 seconds. Then fade to black. Clean end.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label audio">Audio</span>
+        <span class="detail-content">
+          Final sustained note, slowly fading. One last soft <em>bass pulse</em> on the X heartbeat.
+          Then silence. Clean cut.
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label motion">Motion</span>
+        <span class="detail-content">
+          URL fades in (0.5s). Hold (1.5s). X pulses once (0.5s). Fade to black (0.5s).
+          Total frame: 3 seconds.
+        </span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /frames -->
+
+<!-- ===== VOICEOVER SCRIPT ===== -->
+<div class="audio-section">
+  <h2>Voiceover Script — Full 30s Narration (British Male)</h2>
+  <div class="audio-grid">
+    <div class="audio-card">
+      <h4>The Problem — 0:00–0:04</h4>
+      <p class="description" style="color:#fff; font-style:italic; font-size:1rem;">
+        "Most training is built to check a box. Not to change behavior. Seventy percent? Forgotten in a day."
+      </p>
+      <p class="description">Tone: Calm but pointed. Stating facts that everyone knows but nobody says. Slightly provocative.</p>
+    </div>
+    <div class="audio-card">
+      <h4>The Question — 0:06–0:10</h4>
+      <p class="description" style="color:#fff; font-style:italic; font-size:1rem;">
+        "What if training was something people actually remembered?"
+      </p>
+      <p class="description">Tone: The pivot. Genuinely curious. Emphasis on "actually." This is where the energy shifts.</p>
+    </div>
+    <div class="audio-card">
+      <h4>The Solution — 0:10–0:20</h4>
+      <p class="description" style="color:#fff; font-style:italic; font-size:1rem;">
+        "We fuse instructional design, UX, and AI to create experiences that are immersive, accessible, and measurable. From blueprint to delivery. Analytics that prove results."
+      </p>
+      <p class="description">Tone: Confident, building energy. Each phrase is a capability proof point. Pace picks up slightly.</p>
+    </div>
+    <div class="audio-card">
+      <h4>The Brand — 0:20–0:30</h4>
+      <p class="description" style="color:#fff; font-style:italic; font-size:1rem;">
+        "You have the expertise. We create the experience. Design X Factor."
+      </p>
+      <p class="description">Tone: The payoff. Warm, definitive. "Design X Factor" lands as a statement, not a sales pitch. Mic drop.</p>
+    </div>
+  </div>
+  <div style="margin-top:1rem;">
+    <audio controls src="audio/vo-full-30s-narration.mp3" style="width:100%; height:36px;"></audio>
+    <span class="status ready" style="font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:999px; background:rgba(16,185,129,0.2); color:#10b981;">Full narration generated — 30.4s</span>
+  </div>
+</div>
+
+<!-- ===== MUSIC DIRECTION ===== -->
+<div class="audio-section">
+  <h2>Music Direction</h2>
+  <div class="audio-grid">
+    <div class="audio-card">
+      <h4>Genre & Mood</h4>
+      <p class="description">
+        Modern cinematic electronic. Atmospheric but driving. Not generic corporate — emotional, human.
+        Think ODESZA "A Moment Apart", Labrinth "Still Don't Know My Name", M83 "Midnight City" intro energy.
+      </p>
+    </div>
+    <div class="audio-card">
+      <h4>Structure</h4>
+      <p class="description">
+        0:00-0:04 — Quiet/tense (boring training world)<br>
+        0:05 — DROPS (the break, music enters)<br>
+        0:06-0:19 — Builds through transformation, energy rising<br>
+        0:19 — PEAK (results moment)<br>
+        0:20-0:24 — Pulls back, voice takes over<br>
+        0:24-0:30 — Resolves, warm conclusion
+      </p>
+    </div>
+    <div class="audio-card">
+      <h4>BPM & Key</h4>
+      <p class="description">
+        BPM: 100-110. Not too fast — confident, not frantic.<br>
+        Key: Minor → Major resolution. The key change at 0:20 mirrors the emotional shift.
+      </p>
+    </div>
+    <div class="audio-card">
+      <h4>SFX Needed</h4>
+      <p class="description">
+        1. Flat monotone narrator "Welcome to Module 1..."<br>
+        2. Rapid mouse clicks (rhythmic)<br>
+        3. Bass hit (impact)<br>
+        4. Digital glitch/crackle<br>
+        5. Glass shatter<br>
+        6. Whoosh (split screen slide)<br>
+        7. Mechanical lock-in clicks<br>
+        8. Soft bass pulse (heartbeat)
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRODUCTION NOTES ===== -->
+<div class="production">
+  <h2>Production Notes</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <h3>Visual Style</h3>
+      <ul>
+        <li>Color shift: Desaturated gray (Hook) → Rich dark UI with teal + orange accents (Transformation)</li>
+        <li>Motion: Smooth but punchy. Ease-in-out with hard cuts on beat drops</li>
+        <li>Typography: Inter or Space Grotesk. Heavy weights. Tight kerning</li>
+        <li>Screen content: Use actual DXF UI patterns — dark backgrounds, glass cards, interactive elements</li>
+        <li>Apple product reveal quality meets Dribbble design showcase</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Brand Assets Required</h3>
+      <ul>
+        <li>DXF logo wordmark (vector/SVG)</li>
+        <li>Brand colors: Teal #0D9488, Orange #F97316, Space #050508</li>
+        <li>Fonts: Space Grotesk (headings), DM Sans (body), Inter (UI)</li>
+        <li>Portfolio samples for "after" transformation visuals</li>
+        <li>Website screenshots/recordings for dashboard shots</li>
+        <li>Prospectus interactive page for reference UI style</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Deliverables</h3>
+      <ul>
+        <li>16:9 (1920x1080) — YouTube, Website, LinkedIn</li>
+        <li>9:16 (1080x1920) — Instagram Reels, TikTok, YouTube Shorts</li>
+        <li>1:1 (1080x1080) — LinkedIn feed, Twitter/X</li>
+        <li>ProRes 4444 master file</li>
+        <li>H.264 web-optimized exports</li>
+        <li>Thumbnail still (16:9) for each platform</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Production Team Needs</h3>
+      <ul>
+        <li>Motion designer / After Effects artist (primary)</li>
+        <li>Voiceover: MaleArcher voice via F5-TTS (proof-of-concept included)</li>
+        <li>Licensed music track or custom composition</li>
+        <li>Stock footage: bored office workers, hands on keyboards (2-3 hours)</li>
+        <li>Screen recordings of DXF portfolio work</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Key Principle</h3>
+      <ul>
+        <li>The problem hits in <strong style="color:#ef4444">4 seconds</strong></li>
+        <li>The transformation sells itself in <strong style="color:#10b981">14 seconds</strong></li>
+        <li>The brand sticks in <strong style="color:#8b5cf6">7 seconds</strong></li>
+        <li>The CTA closes in <strong style="color:#38bdf8">3 seconds</strong></li>
+        <li>Full 30-second narration — voice guides the entire experience</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Reference Videos</h3>
+      <ul>
+        <li>Nike "You Can't Stop Us" — split-screen energy</li>
+        <li>Apple "Designed by Apple" — minimal VO, visual storytelling</li>
+        <li>Stripe brand videos — dark UI showcase</li>
+        <li>Figma product launches — design tool reveals</li>
+        <li>Notion "What is Notion?" — before/after transformation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONCEPT IMAGE FRAMES ===== -->
+<div class="production">
+  <h2>Concept Art — Generated Frames</h2>
+  <p style="color:#94a3b8; margin-bottom:1.5rem;">
+    The following frames will be generated using ComfyUI Z-Image to give the design team a visual reference
+    for each key moment. These are concept frames, not final video frames — they represent the mood, color,
+    and composition target for each beat.
+  </p>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <h3>Frame Set A — The Problem (Hook)</h3>
+      <ul>
+        <li>F01: Boring corporate training screen</li>
+        <li>F02: Disengaged person at computer</li>
+        <li>F03: Stat typography "70%" (post-production overlay)</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Frame Set B — The Break</h3>
+      <ul>
+        <li>F04: Digital glitch/shatter moment</li>
+        <li>F05: Color emergence — teal + orange through darkness</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Frame Set C — The Transformation</h3>
+      <ul>
+        <li>F06: Beautiful dark UI learning dashboard</li>
+        <li>F07: Engaged person at modern workstation</li>
+        <li>F08: Split-screen concept (before | after)</li>
+        <li>F09: Mobile device showing interactive course</li>
+        <li>F10: Blueprint-to-product wireframe transformation</li>
+        <li>F11: Designer reviewing AI-generated content</li>
+        <li>F12: Analytics dashboard with rising metrics</li>
+      </ul>
+    </div>
+    <div class="prod-card">
+      <h3>Frame Set D — The Brand</h3>
+      <ul>
+        <li>F13-F16: Typography and logo (post-production — After Effects)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Design X Factor — Video Sizzle Reel Storyboard<br>
+  Generated Feb 2026 | Confidential — For Internal & Production Team Use Only
+</div>
+
+</body>
+</html>

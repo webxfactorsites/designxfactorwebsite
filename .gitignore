@@ -31,3 +31,11 @@ dist-ssr
 
 # Temp/media files
 test-video.mp4
+
+# Large media files (exceed GitHub 100MB limit)
+*.mp4
+*.wav
+*.zip
+
+# Prospectus backups
+Prospectus/*.backup-*.html

@@ -1,0 +1,89 @@
+{
+  "project": "DXF 30-Second Sizzle Reel",
+  "provider": "comfyui",
+  "workflow": "Z-ImageAPI.json",
+  "dimensions": { "width": 1664, "height": 928 },
+  "negativePrompt": "text, words, letters, numbers, logo, watermark, signature, title, subtitle, caption, label, writing, typography, font, alphabet, diagram, flowchart, infographic, bullet points, table, chart, graph, blurry, low quality, ugly, deformed, amateur, jpeg artifacts",
+  "frames": [
+    {
+      "id": "F01",
+      "name": "The Dull Slideshow",
+      "beat": "hook",
+      "timecode": "0:00-0:02",
+      "prompt": "A boring corporate training computer screen showing a lifeless slideshow presentation, bullet points on pale blue background, clip art of generic handshake, progress bar showing 3 percent at the bottom, office cubicle environment visible around the monitor edges, fluorescent lighting overhead casting harsh shadows, everything is desaturated and gray with muted blues, cold sterile atmosphere, the screen dominates the frame taking up 80 percent of the composition, slight dust particles visible in the air from fluorescent light, photorealistic office setting, shallow depth of field focusing on the screen, 8K resolution, cinematic composition",
+      "outputPath": "frames/F01-dull-slideshow.png"
+    },
+    {
+      "id": "F02",
+      "name": "The Disengaged Learner",
+      "beat": "hook",
+      "timecode": "0:02-0:03.5",
+      "prompt": "A young professional sitting at a corporate desk looking extremely bored and disengaged, chin resting on hand, eyes half-closed and glazed over, the other hand hovering over a mouse clicking mindlessly, a computer monitor in front showing a bland training interface, cold fluorescent office lighting, desaturated color palette with grays and muted blues, the person's expression shows complete mental checkout, modern office environment with neutral walls, shallow depth of field with person sharp and background slightly soft, photorealistic corporate photography style, cinematic composition, 8K resolution, dramatic lighting highlighting the boredom",
+      "outputPath": "frames/F02-disengaged-learner.png"
+    },
+    {
+      "id": "F04",
+      "name": "The Glitch Moment",
+      "beat": "break",
+      "timecode": "0:04-0:05",
+      "prompt": "A dramatic digital glitch effect tearing across a dark screen, RGB color channels splitting apart creating red green and blue offset distortion, horizontal scan lines breaking apart, digital noise and static corruption spreading across the frame like cracks in glass, fragments of the old gray corporate training visible through the distortion but being consumed by the glitch, streaks of bright teal and orange light starting to bleed through the cracks of the broken digital surface, dramatic contrast between the dying gray world and emerging vibrant colors, cyberpunk aesthetic, high contrast, volumetric light rays piercing through digital fragments, 8K resolution, cinematic composition, dramatic lighting",
+      "outputPath": "frames/F04-glitch-moment.png"
+    },
+    {
+      "id": "F05",
+      "name": "Color Emergence",
+      "beat": "break",
+      "timecode": "0:05-0:06",
+      "prompt": "Shattered glass fragments floating in dark space with brilliant teal and orange light pouring through from behind, particles of light drifting upward through the broken shards, the fragments reflect warm colors creating a prismatic effect, beyond the shattered barrier a warm glowing world is visible with rich teal and orange tones, volumetric god rays streaming through the gaps between glass pieces, the transition from dark fragmented space to warm vibrant light, cinematic depth, floating glass particles catching light, dark void transitioning to warmth, atmospheric fog, 8K resolution, dramatic volumetric lighting, cinematic composition",
+      "outputPath": "frames/F05-color-emergence.png"
+    },
+    {
+      "id": "F06",
+      "name": "Beautiful Learning Dashboard",
+      "beat": "transformation",
+      "timecode": "0:06-0:08",
+      "prompt": "A stunning modern learning management dashboard interface displayed on a large high-resolution monitor, dark UI design with deep navy and charcoal backgrounds, glowing teal accent lines and orange highlight buttons, glass morphism cards floating with subtle transparency showing course modules and progress rings, interactive elements with beautiful typography, data visualization with animated charts, the interface looks premium and immersive like a high-end SaaS product, ambient teal and orange glow reflecting off the desk surface, dark modern workspace environment, volumetric ambient lighting, the dashboard radiates sophistication and engagement, photorealistic, 8K resolution, cinematic shallow depth of field",
+      "outputPath": "frames/F06-beautiful-dashboard.png"
+    },
+    {
+      "id": "F07",
+      "name": "The Engaged Learner",
+      "beat": "transformation",
+      "timecode": "0:08-0:10",
+      "prompt": "A young professional leaning forward toward their computer screen with genuine interest and engagement, bright attentive eyes, slight smile of discovery, the screen casting warm teal and orange light onto their face, their posture is active and alert contrasting with boredom, a beautiful interactive learning interface visible on the screen with rich colors and interactive elements, modern clean workspace with warm ambient lighting, the person represents total engagement and focus, shallow depth of field with the person sharp, warm color grading with teal and orange accents, photorealistic corporate photography, cinematic composition, 8K resolution",
+      "outputPath": "frames/F07-engaged-learner.png"
+    },
+    {
+      "id": "F09",
+      "name": "Mobile Learning Experience",
+      "beat": "transformation",
+      "timecode": "0:12-0:13",
+      "prompt": "A hand holding a modern smartphone displaying a beautiful mobile-responsive interactive learning course, the screen shows an immersive lesson with rich visuals and clean typography, dark UI with teal and orange accent colors, the phone screen is crisp and vibrant, the background is softly blurred showing a modern office or cafe environment, warm ambient lighting, the course on screen looks engaging with interactive elements visible, shallow depth of field focusing on the phone screen, photorealistic, warm color grading, cinematic composition, 8K resolution",
+      "outputPath": "frames/F09-mobile-learning.png"
+    },
+    {
+      "id": "F10",
+      "name": "Blueprint to Product",
+      "beat": "transformation",
+      "timecode": "0:15-0:17",
+      "prompt": "An overhead top-down view of a design workspace showing a digital wireframe blueprint on the left side transitioning into a polished finished interactive course interface on the right side, the left side shows line drawings and structural outlines in light blue on dark background, the right side shows the same layout now fully realized with rich colors interactive elements and beautiful imagery, the transition happens mid-frame like a reveal, teal and orange color scheme on the finished side, grid lines and annotations visible on the blueprint side, dark workspace surface, dramatic overhead lighting, the contrast between blueprint and finished product is striking, 8K resolution, cinematic composition, architectural photography style",
+      "outputPath": "frames/F10-blueprint-to-product.png"
+    },
+    {
+      "id": "F11",
+      "name": "Human Plus AI Collaboration",
+      "beat": "transformation",
+      "timecode": "0:17-0:19",
+      "prompt": "Close-up of a designer's hands on a keyboard with a large monitor showing both AI-generated content and human design tools side by side, the screen shows a design application with a course layout being refined, warm teal and orange UI accents on the dark interface, the human hands are actively working showing craft and intentionality, code or design specifications visible on part of the screen, warm desk lamp lighting creating dramatic side lighting on the hands, modern clean workspace, shallow depth of field macro photography style, the image conveys precision and human expertise enhanced by technology, photorealistic, cinematic composition, 8K resolution, warm lighting",
+      "outputPath": "frames/F11-human-ai-collab.png"
+    },
+    {
+      "id": "F12",
+      "name": "Analytics Dashboard Rising",
+      "beat": "transformation",
+      "timecode": "0:19-0:20",
+      "prompt": "A dramatic analytics dashboard on a large screen showing engagement metrics rising sharply, a large percentage counter showing ninety four percent completion rate, green upward trending graphs, circular progress indicators glowing with completion, knowledge retention gauges at high levels, the dashboard uses dark UI with teal and orange data visualization colors, numbers and graphs are large and prominent, the whole screen radiates success and positive outcomes, ambient glow from the screen in a dark room creating dramatic lighting, the data tells a story of transformation from low to high engagement, photorealistic, cinematic composition, 8K resolution, dramatic lighting",
+      "outputPath": "frames/F12-analytics-rising.png"
+    }
+  ]
+}
