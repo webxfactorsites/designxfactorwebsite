@@ -1093,55 +1093,6 @@ body.mode-listen #view-listen { display: block; }
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 .video-wrapper video { width: 100%; display: block; cursor: pointer; }
-.video-overlay-layer {
-  position: absolute; top: 0; left: 0;
-  width: calc(100% / var(--ov-scale, 1));
-  height: calc((100% - 60px) / var(--ov-scale, 1));
-  pointer-events: none; overflow: hidden;
-  transform: scale(var(--ov-scale, 1));
-  transform-origin: top left;
-}
-.v-overlay {
-  position: absolute; padding: 0.7rem 1rem; border-radius: 0.6rem;
-  background: rgba(5,5,8,0.82); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  opacity: 0; transform: translateY(8px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  font-size: 0.85rem; color: #e2e8f0; max-width: 320px;
-}
-.v-overlay.vis { opacity: 1; transform: translateY(0); }
-.v-overlay .v-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 0.25rem; }
-.v-overlay .v-stat { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg,#38bdf8,#d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-/* Reveal items — generic animated element with data-at attribute */
-.ri { opacity: 0; transform: translateY(6px); transition: opacity 0.4s ease, transform 0.4s ease; }
-.ri.revealed { opacity: 1; transform: translateY(0); }
-.ri-left { opacity: 0; transform: translateX(-14px); transition: opacity 0.4s ease, transform 0.4s ease; }
-.ri-left.revealed { opacity: 1; transform: translateX(0); }
-.ri-scale { opacity: 0; transform: scale(0.7); transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
-.ri-scale.revealed { opacity: 1; transform: scale(1); }
-/* Strikethrough animation for "wrong" items */
-.ri-strike.revealed { text-decoration: line-through; text-decoration-color: #ef4444; color: #64748b; }
-/* Metric arrow animation */
-.metric-arrow { display: inline-block; color: #22c55e; font-weight: 800; opacity: 0; transform: translateY(4px); transition: opacity 0.3s, transform 0.3s; }
-.ri.revealed .metric-arrow { opacity: 1; transform: translateY(0); }
-/* Two-column comparison */
-.ov-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.3rem; }
-.ov-col-header { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding-bottom: 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.2rem; }
-/* Pipeline timeline */
-.pl-timeline { position: relative; padding-left: 22px; margin-top: 0.4rem; }
-.pl-timeline::before { content: ''; position: absolute; left: 5px; top: 2px; bottom: 2px; width: 2px; background: linear-gradient(180deg, #38bdf8 0%, #d946ef 100%); border-radius: 1px; opacity: 0.4; }
-.pipeline-step { position: relative; padding: 0.2rem 0 0.35rem 0; opacity: 0; transform: translateX(-12px); transition: opacity 0.45s ease, transform 0.45s ease; }
-.pipeline-step.revealed { opacity: 1; transform: translateX(0); }
-.pipeline-step .step-marker { position: absolute; left: -22px; top: 0.3rem; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #38bdf8; background: rgba(15,23,42,0.9); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
-.pipeline-step.revealed .step-marker { background: #38bdf8; box-shadow: 0 0 8px rgba(56,189,248,0.5); }
-.pipeline-step .step-label { font-size: 0.76rem; font-weight: 600; color: #475569; transition: color 0.3s; }
-.pipeline-step.revealed .step-label { color: #e2e8f0; }
-.pipeline-step .step-num-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; color: #38bdf8; margin-right: 0.3rem; min-width: 0.9rem; }
-/* Benefit list with dots */
-.ben-item { display: flex; align-items: baseline; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; padding: 0.15rem 0; }
-.ben-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 0.15rem; }
-.ben-dot-blue { background: #38bdf8; }
-.ben-dot-purple { background: #d946ef; }
 .video-cc {
   position: absolute; bottom: 56px; left: 50%; transform: translateX(-50%);
   max-width: 80%; text-align: center; padding: 0.45rem 1rem;
@@ -1698,10 +1649,8 @@ body.mode-listen #view-listen { display: block; }
   <div class="video-experience">
     <div class="video-wrapper paused" id="video-wrap">
       <video id="dxf-video" preload="metadata" playsinline>
-        <source src="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/prospectus/media/dxf-video-avatar.mp4" type="video/mp4">
+        <source src="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/prospectus/media/DFXMain.mp4" type="video/mp4">
       </video>
-      <!-- Overlays -->
-      <div class="video-overlay-layer" id="v-overlays"></div>
       <!-- Closed Captions -->
       <div class="video-cc" id="v-cc" aria-live="polite" aria-atomic="true"></div>
       <!-- Controls -->
@@ -1930,7 +1879,6 @@ body.mode-listen #view-listen { display: block; }
   var vCCBtn = document.getElementById('vc-cc');
   var vFSBtn = document.getElementById('vc-fs');
   var vCCEl = document.getElementById('v-cc');
-  var vOvEl = document.getElementById('v-overlays');
   var ccOn = false;
 
   var playIcon = '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>';
@@ -1970,25 +1918,6 @@ body.mode-listen #view-listen { display: block; }
     [155.7, 160.9, "Reach out to gio at designxfactor.com. Let us transform your training together."]
   ];
 
-              // Overlay data: [startSec, endSec, position, html] — timed to MaleArcher.mp3 voice
-  var vOvs = [
-    [0.3, 2.7, 'top:55.3%;left:39.8%;width:19.7%;transform:scale(1.70);transform-origin:top left', '<div class="v-label">COMPANY OVERVIEW</div><div style="font-size:1.1rem;font-weight:700" class="gradient-text">Design X Factor</div>'],
-    [2.7, 14.5, 'top:34%;left:4%;transform:scale(1.36);transform-origin:top left;width:24.4%', '<div class="v-label">THE PROBLEM</div><div class="v-stat ri-scale" data-at="2.7">70%</div><div class="ri" data-at="2.7" style="font-size:0.78rem;color:#94a3b8">forgotten within 24 hours</div><div class="ri" data-at="7.4" style="font-size:0.82rem;font-weight:700;color:#ef4444;margin-top:0.4rem">$Billions wasted yearly</div><div class="ri" data-at="11.7" style="font-size:0.85rem;font-weight:700;color:#e2e8f0;margin-top:0.4rem">It is the design'],
-    [15.3, 26.9, 'top:34%;left:4%;width:22%;transform:scale(1.26);transform-origin:top left', '<div class="v-label">THE MISSION</div><div class="ri" data-at="18.6" style="font-size:0.85rem;color:#64748b;margin-top:0.3rem"><span style="color:#ef4444;font-weight:700">&#10007;</span> Check a box</div><div class="ri" data-at="20.5" style="font-size:0.85rem;margin-top:0.2rem"><span style="color:#22c55e;font-weight:700">&#10003;</span> <span style="font-weight:700;color:#e2e8f0">Create change</span></div><div class="ri" data-at="22.5" style="font-size:0.82rem;color:#94a3b8;margin-top:0.35rem"><span style="text-decoration:line-through;color:#64748b">Endure</span> &rarr; <span style="color:#d946ef;font-weight:600">Experience</span></div>'],
-    [26.9, 35.5, 'top:34%;left:4%;width:24%', '<div class="v-label">OUR BELIEF</div><div class="ri" data-at="27.5" style="font-size:0.95rem;font-weight:600;color:#d946ef;line-height:1.5">Designing experiences<br>that create <span style="color:#e2e8f0;font-weight:800">lasting change</span></div>'],
-    [41, 49.7, 'top:30%;left:3.5%;width:21%', '<div class="v-label">INSTRUCTIONAL DESIGN</div><div style="font-size:0.9rem;font-weight:700;color:#38bdf8;margin-bottom:0.3rem">ID Expertise</div><div class="ri-left" data-at="43.0"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Learning Objectives</span></div></div><div class="ri-left" data-at="45.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Cognitive Load Mgmt</span></div></div><div class="ri-left" data-at="47.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Spaced Repetition</span></div></div>'],
-    [49.7, 55.7, 'top:30%;left:3.5%;width:21%', '<div class="v-label">UX DESIGN</div><div style="font-size:0.9rem;font-weight:700;color:#d946ef;margin-bottom:0.3rem">UX Expertise</div><div class="ri-left" data-at="50.2"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">User Research</span></div></div><div class="ri-left" data-at="51.5"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Interaction Design</span></div></div><div class="ri-left" data-at="53.0"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Visual Hierarchy</span></div></div><div class="ri-left" data-at="54.5"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Accessibility</span></div></div>'],
-    [55.7, 64, 'top:57.5%;left:39.7%;width:32.7%;transform:scale(1.19);transform-origin:top left', '<div class="v-label">THE FUSION</div><div style="margin-top:0.2rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.2rem"><span class="ri-scale" data-at="56" style="display:inline-block;font-size:1rem;font-weight:800;color:#38bdf8;padding:0.15rem 0.4rem;border:1px solid rgba(56,189,248,0.3);border-radius:4px;background:rgba(56,189,248,0.08)">ID</span> <span class="ri" data-at="57" style="display:inline-block;font-size:1.1rem;font-weight:800;color:#94a3b8">+</span> <span class="ri-scale" data-at="57.5" style="display:inline-block;font-size:1rem;font-weight:800;color:#d946ef;padding:0.15rem 0.4rem;border:1px solid rgba(217,70,239,0.3);border-radius:4px;background:rgba(217,70,239,0.08)">UX</span> <span class="ri-scale" data-at="59" style="font-size:1.3rem;font-weight:900"><span class="gradient-text">= The X Factor</span></span></div>'],
-    [70, 82, 'top:28%;left:7%;width:22%;transform:scale(1.24);transform-origin:top left', '<div class="v-label">OUR PLATFORM</div><div style="font-size:0.9rem;font-weight:600;margin-bottom:0.15rem">CourseFuture Pipeline</div><div class="pl-timeline"><div class="pipeline-step" data-at="75"><div class="step-marker"></div><span class="step-num-badge">1</span><span class="step-label">Source Ingestion</span></div><div class="pipeline-step" data-at="75.5"><div class="step-marker"></div><span class="step-num-badge">2</span><span class="step-label">Blueprint & Strategy</span></div><div class="pipeline-step" data-at="77"><div class="step-marker"></div><span class="step-num-badge">3</span><span class="step-label">Content Generation</span></div><div class="pipeline-step" data-at="78.5"><div class="step-marker"></div><span class="step-num-badge">4</span><span class="step-label">Media Production</span></div><div class="pipeline-step" data-at="79"><div class="step-marker"></div><span class="step-num-badge">5</span><span class="step-label">Build & Export</span></div></div>'],
-    [82, 89, 'top:34%;left:7%;width:22%;transform:scale(1.18);transform-origin:top left', '<div class="v-label">QUALITY ASSURANCE</div><div class="ri" data-at="82.5" style="font-size:0.85rem;font-weight:700;color:#22c55e;margin-top:0.2rem">&#10003; Quality gates at every phase</div><div class="ri" data-at="85" style="font-size:0.85rem;font-weight:700;color:#22c55e;margin-top:0.2rem">&#10003; Client review & approval</div><div class="ri" data-at="87" style="font-size:0.85rem;font-weight:700;color:#e2e8f0;margin-top:0.2rem">Full transparency. No surprises.</div>'],
-    [97, 106.5, 'top:30%;left:7%;width:22%;transform:scale(1.22);transform-origin:top left', '<div class="v-label">AI-POWERED</div><div style="font-size:0.88rem;font-weight:700;color:#38bdf8;margin-bottom:0.3rem">We use AI for:</div><div class="ri-left" data-at="100.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Content Drafting</span></div></div><div class="ri-left" data-at="102"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Visual Asset Generation</span></div></div><div class="ri-left" data-at="103.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Voice Production</span></div></div><div class="ri-left" data-at="105"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Quality Validation</span></div></div>'],
-    [106.5, 114.5, 'top:34.9%;left:7%;width:23%;transform:scale(1.11);transform-origin:top left', '<div class="v-label">HUMAN-LED</div><div class="ri" data-at="107" style="font-size:0.92rem;font-weight:700;color:#e2e8f0;margin-top:0.2rem">Human expertise drives every<br>creative & pedagogical decision</div><div class="ri-scale" data-at="110" style="margin-top:0.4rem;font-size:0.88rem;padding:0.3rem 0.5rem;border-radius:6px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.2);text-align:center"><span style="color:#38bdf8;font-weight:800">AI = Enabler</span><span style="color:#64748b;margin:0 0.3rem">|</span><span style="color:#94a3b8;font-weight:600">Not Decision Maker</span></div>'],
-    [114.8, 125, 'top:36.3%;left:7.8%;width:22%;transform:scale(1.27);transform-origin:top left', '<div class="v-label">FOR LEARNERS</div><div class="ri-left" data-at="115.5"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Engaging Experiences</span></div></div><div class="ri-left" data-at="120"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Personalized Pathways</span></div></div><div class="ri-left" data-at="122"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Multi-modal Content</span></div></div><div class="ri-left" data-at="124"><div class="ben-item"><div class="ben-dot ben-dot-purple"></div><span style="color:#e2e8f0">Accessible Design</span></div></div>'],
-    [125, 135.5, 'top:36.3%;left:7%;width:23%;transform:scale(1.20);transform-origin:top left', '<div class="v-label">FOR ORGANIZATIONS</div><div class="ri-left" data-at="126"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Faster Time to Competency</span></div></div><div class="ri-left" data-at="128.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Scalable Production</span></div></div><div class="ri-left" data-at="131"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Analytics & Proven ROI</span></div></div><div class="ri-left" data-at="133.5"><div class="ben-item"><div class="ben-dot ben-dot-blue"></div><span style="color:#e2e8f0">Brand-Consistent Courseware</span></div></div>'],
-    [147, 155.7, 'top:40%;left:7%;width:22%;transform:scale(1.19);transform-origin:top left', '<div class="v-label">THE IMPACT</div><div class="ri" data-at="148" style="font-size:0.9rem;font-weight:700;color:#e2e8f0;margin-top:0.3rem">Engagement <span class="metric-arrow">&#9650;</span></div><div class="ri" data-at="150" style="font-size:0.9rem;font-weight:700;color:#e2e8f0;margin-top:0.15rem">Retention <span class="metric-arrow">&#9650;</span></div><div class="ri" data-at="152" style="font-size:0.9rem;font-weight:700;color:#e2e8f0;margin-top:0.15rem">Behavior Change <span class="metric-arrow">&#9650;</span></div><div class="ri-scale" data-at="154.4" style="margin-top:0.4rem;font-size:1.15rem;font-weight:900"><span class="gradient-text">The X Factor</span></div>'],
-    [155.7, 161, 'top:45%;left:7%;width:28.4%', '<div class="v-label">GET IN TOUCH</div><div class="ri" data-at="156" style="font-size:1rem;font-weight:700;color:#d946ef;margin-top:0.2rem">gio@designxfactor.com</div><div class="ri" data-at="157.5" style="font-size:0.82rem;color:#94a3b8;margin-top:0.15rem">designxfactor.com</div>']
-  ];
-
   // Generate WebVTT from captions and attach <track> to video (WCAG 1.2.2)
   (function() {
     if (!vid || !vCaps.length) return;
@@ -2009,30 +1938,6 @@ body.mode-listen #view-listen { display: block; }
     vid.appendChild(track);
     // Keep native track hidden — we use our own visual CC overlay
     vid.textTracks[0].mode = 'hidden';
-  })();
-
-  // Build overlay DOM
-  vOvs.forEach(function(o, i) {
-    var d = document.createElement('div');
-    d.className = 'v-overlay';
-    d.id = 'vov-' + i;
-    d.style.cssText = o[2];
-    d.innerHTML = o[3];
-    vOvEl.appendChild(d);
-  });
-
-  // Responsive overlay scaling — scale layer proportionally to video width
-  (function() {
-    if (!vidWrap || !vOvEl) return;
-    function scaleOv() {
-      var w = vidWrap.offsetWidth;
-      if (w < 10) return;
-      var s = Math.min(1, w / 960);
-      vOvEl.style.setProperty('--ov-scale', s < 0.95 ? s : 1);
-    }
-    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(scaleOv).observe(vidWrap);
-    window.addEventListener('resize', scaleOv);
-    scaleOv();
   })();
 
   function fmtTime(s) {
@@ -2075,23 +1980,6 @@ body.mode-listen #view-listen { display: block; }
         }
         vCCEl.textContent = cap;
         vCCEl.classList.toggle('vis', cap !== '');
-      }
-      // Overlays
-      for (var j = 0; j < vOvs.length; j++) {
-        var el = document.getElementById('vov-' + j);
-        if (el) el.classList.toggle('vis', t >= vOvs[j][0] && t < vOvs[j][1]);
-      }
-      // Animate all reveal items (pipeline steps, ri, ri-left, ri-scale)
-      var revItems = document.querySelectorAll('[data-at]');
-      for (var k = 0; k < revItems.length; k++) {
-        var at = parseFloat(revItems[k].getAttribute('data-at'));
-        // Only animate items inside currently visible overlays
-        var parentOv = revItems[k].closest('.v-overlay');
-        if (parentOv && parentOv.classList.contains('vis')) {
-          revItems[k].classList.toggle('revealed', t >= at);
-        } else if (parentOv) {
-          revItems[k].classList.remove('revealed');
-        }
       }
     });
     vid.addEventListener('ended', function() { vidWrap.classList.add('paused'); vPlay.innerHTML = playIcon; });
