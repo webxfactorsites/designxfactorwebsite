@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Custom theme configuration */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+
+  --color-space: #050508;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-brand-blue: #38bdf8;
+  --color-brand-purple: #d946ef;
+  --color-brand-gold: #f59e0b;
+  --color-brand-red: #ff4d6d;
+
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-spin-slower: spin 55s linear infinite reverse;
+  --animate-spin-slowest: spin 70s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-scan: scan 2s ease-in-out infinite;
+  --animate-wave: wave 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes scan {
+  0%, 100% { top: 0%; }
+  50% { top: 100%; }
+}
+
+@keyframes wave {
+  0%, 100% { height: 20%; }
+  50% { height: 100%; }
+}

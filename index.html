@@ -20,6 +20,9 @@
     <meta property="og:title" content="DesignXFactor | Your Training Content Exists. We Make It Unforgettable." />
     <meta property="og:description" content="We transform static corporate training into experiences learners actually remember. Custom design for YOUR audience — in weeks, not months." />
     <meta property="og:image" content="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Design X Factor — Learning Solutions That Transform" />
     <meta property="og:site_name" content="Design X Factor" />
     <meta property="og:locale" content="en_US" />
 
@@ -29,6 +32,7 @@
     <meta name="twitter:title" content="DesignXFactor | Your Training Content Exists. We Make It Unforgettable." />
     <meta name="twitter:description" content="We transform static corporate training into experiences learners actually remember. Custom design for YOUR audience — in weeks, not months." />
     <meta name="twitter:image" content="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/og-image.png" />
+    <meta name="twitter:image:alt" content="Design X Factor — Learning Solutions That Transform" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://designxfactor.com/" />
@@ -47,6 +51,7 @@
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://designxfactor.com/#professional-service",
       "name": "Design X Factor",
       "description": "We transform static corporate training into experiences learners actually remember. Custom learning experience design — in weeks, not months.",
       "url": "https://designxfactor.com",
@@ -93,6 +98,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://designxfactor.com/#organization",
       "name": "Design X Factor",
       "url": "https://designxfactor.com",
       "logo": "https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/DXF_logo-white.png",
@@ -102,57 +108,38 @@
         "contactType": "sales",
         "email": "hello@designxfactor.com"
       },
-      "sameAs": []
+      "sameAs": [
+        "https://www.linkedin.com/company/designxfactor"
+      ]
     }
     </script>
-    
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            colors: {
-              space: '#050508',
-              glass: 'rgba(255, 255, 255, 0.03)',
-              border: 'rgba(255, 255, 255, 0.1)',
-              brand: {
-                blue: '#38bdf8',
-                purple: '#d946ef',
-                gold: '#f59e0b',
-                red: '#ff4d6d',
-              }
-            },
-            animation: {
-              'spin-slow': 'spin 40s linear infinite',
-              'spin-slower': 'spin 55s linear infinite reverse',
-              'spin-slowest': 'spin 70s linear infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'scan': 'scan 2s ease-in-out infinite',
-              'wave': 'wave 1s ease-in-out infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              scan: {
-                '0%, 100%': { top: '0%' },
-                '50%': { top: '100%' }
-              },
-              wave: {
-                '0%, 100%': { height: '20%' },
-                '50%': { height: '100%' }
-              }
-            }
-          }
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://designxfactor.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Prospectus",
+          "item": "https://designxfactor.com/prospectus/"
         }
-      }
+      ]
+    }
     </script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Tailwind CSS is now built at compile time via @tailwindcss/vite -->
 
     <style>
       /* Screen reader only utility */
@@ -291,7 +278,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <!-- Skip Link for Keyboard Users -->
