@@ -201,18 +201,19 @@ section {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.5);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   padding: 5px;
   background-clip: content-box;
+  box-shadow: 0 0 4px rgba(255,255,255,0.4), 0 0 8px rgba(255,255,255,0.15);
 }
-.nav-dot:hover { background: rgba(255,255,255,0.75); background-clip: content-box; }
+.nav-dot:hover { background: rgba(255,255,255,0.85); background-clip: content-box; box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 12px rgba(255,255,255,0.25); }
 .nav-dot.active {
   background: #ff4d6d;
-  box-shadow: 0 0 6px rgba(255,77,109,0.5);
+  box-shadow: 0 0 6px rgba(255,77,109,0.5), 0 0 12px rgba(255,77,109,0.25);
   background-clip: content-box;
 }
 .nav-dot .dot-label {
@@ -347,6 +348,9 @@ section {
 }
 
 .logo { height: 80px; margin-bottom: 0.75rem; }
+.logo-light { display: none; }
+body.light-theme .logo-dark { display: none; }
+body.light-theme .logo-light { display: block; }
 
 .prospectus-title {
   font-size: 1.1rem;
@@ -1201,9 +1205,9 @@ body.mode-watch .back-to-read, body.mode-listen .back-to-read { display: flex; }
 /* Light theme adjustments */
 body.light-theme .orb { opacity: 0.12; }
 body.light-theme .scroll-line { background: linear-gradient(to bottom, var(--text-dim), transparent); }
-body.light-theme .nav-dot { background: rgba(0,0,0,0.3); background-clip: content-box; }
-body.light-theme .nav-dot:hover { background: rgba(0,0,0,0.5); background-clip: content-box; }
-body.light-theme .nav-dot.active { background: #ff4d6d; background-clip: content-box; }
+body.light-theme .nav-dot { background: rgba(0,0,0,0.35); background-clip: content-box; box-shadow: 0 0 4px rgba(0,0,0,0.2), 0 0 8px rgba(0,0,0,0.1); }
+body.light-theme .nav-dot:hover { background: rgba(0,0,0,0.6); background-clip: content-box; box-shadow: 0 0 6px rgba(0,0,0,0.3), 0 0 12px rgba(0,0,0,0.15); }
+body.light-theme .nav-dot.active { background: #ff4d6d; background-clip: content-box; box-shadow: 0 0 6px rgba(255,77,109,0.5), 0 0 12px rgba(255,77,109,0.25); }
 body.light-theme .tl:hover { background: rgba(0,0,0,0.03); }
 body.light-theme .tl.active { background: rgba(0,0,0,0.05); }
 body.light-theme .pc-prog { background: rgba(0,0,0,0.08); }
@@ -1389,7 +1393,8 @@ video::-webkit-media-controls-overlay-cast-button { display: none !important; }
     <div class="orb orb-4"></div>
   </div>
   <div class="hero-content">
-    <img src="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/DXF_logo-white.png" alt="Design X Factor" class="logo">
+    <img src="https://pub-e5994fd168b34b10b119b4228ec3bf11.r2.dev/DXF_logo-white.png" alt="Design X Factor" class="logo logo-dark">
+    <img src="media/DXF_logo.png" alt="Design X Factor" class="logo logo-light">
     <p class="prospectus-title">DXF Prospectus</p>
     <h1 class="hero-title">
       <span class="word gradient-text">Learning&nbsp;</span>
