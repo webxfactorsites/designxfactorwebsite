@@ -162,7 +162,7 @@ export const Process: React.FC<{ onNavigate: (page: PageView) => void }> = ({ on
                     </p>
                     <ul className="space-y-2">
                       {step.details.map((detail, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-slate-500">
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-400">
                           <CheckCircle size={12} style={{ color: step.color }} className="mt-0.5 flex-shrink-0" aria-hidden="true" />
                           <span>{detail}</span>
                         </li>
@@ -209,7 +209,7 @@ export const Process: React.FC<{ onNavigate: (page: PageView) => void }> = ({ on
                 <p className="text-slate-400 text-sm mb-3">{step.description}</p>
                 <ul className="space-y-1.5">
                   {step.details.map((detail, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-slate-500">
+                    <li key={i} className="flex items-center gap-2 text-xs text-slate-400">
                       <CheckCircle size={10} style={{ color: step.color }} aria-hidden="true" />
                       <span>{detail}</span>
                     </li>

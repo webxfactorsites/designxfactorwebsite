@@ -123,16 +123,16 @@ export const Contact: React.FC<{ onNavigate: NavProps['onNavigate'] }> = ({ onNa
 
           {/* Success Message */}
           {submitStatus === 'success' && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3 text-green-800">
-              <CheckCircle size={20} />
+            <div role="alert" className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3 text-green-800">
+              <CheckCircle size={20} aria-hidden="true" />
               <span className="font-medium">Success! Redirecting you now...</span>
             </div>
           )}
 
           {/* Error Message */}
           {submitStatus === 'error' && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-red-800">
-              <AlertCircle size={20} className="mt-0.5" />
+            <div role="alert" className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-red-800">
+              <AlertCircle size={20} className="mt-0.5" aria-hidden="true" />
               <div>
                 <p className="font-medium">Submission failed</p>
                 <p className="text-sm">{errorMessage}</p>

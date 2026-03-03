@@ -62,9 +62,10 @@ export const ProofStrip: React.FC = () => {
   return (
     <section
       className="py-16 bg-gradient-to-b from-[#08080c] to-space relative overflow-hidden"
-      aria-label="Our credentials"
+      aria-labelledby="credentials-heading"
     >
       <div className="container mx-auto px-6 max-w-6xl">
+        <h2 id="credentials-heading" className="sr-only">Our credentials and promises</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
@@ -91,7 +92,7 @@ export const ProofStrip: React.FC = () => {
                 <div className="text-sm font-semibold text-slate-300 mb-2">
                   {stat.label}
                 </div>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {stat.detail}
                 </p>
               </div>
@@ -108,7 +109,7 @@ export const ProofStrip: React.FC = () => {
             transform: promiseVisible ? 'translateY(0)' : 'translateY(20px)',
           }}
         >
-          <p className="text-slate-500 text-sm tracking-wider uppercase">
+          <p className="text-slate-400 text-sm tracking-wider uppercase">
             Our Promise
           </p>
           <p className="text-2xl md:text-3xl font-black text-white mt-3">

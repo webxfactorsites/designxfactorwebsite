@@ -34,7 +34,7 @@ export const Footer: React.FC<NavProps> = ({ onNavigate }) => {
           <p className="text-slate-300 text-sm leading-relaxed mb-4">
             We transform static corporate training into experiences learners actually remember.
           </p>
-          <p className="text-slate-500 text-xs">
+          <p className="text-slate-400 text-xs">
             Custom design for YOUR audience — never templates.
           </p>
         </div>
@@ -111,7 +111,7 @@ export const Footer: React.FC<NavProps> = ({ onNavigate }) => {
           <span className="text-brand-gold">Bueno.</span>{' '}
           <span className="text-brand-purple">Bonito.</span>{' '}
           <span className="text-brand-blue">Barato.</span>{' '}
-          <span className="text-slate-500">— Quality, Beauty, Affordability.</span>
+          <span className="text-slate-400">— Quality, Beauty, Affordability.</span>
         </p>
       </div>
     </footer>

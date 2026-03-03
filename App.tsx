@@ -14,14 +14,18 @@ import { HowWeWork } from './pages/HowWeWork';
 import { PageView } from './types';
 
 // SEO Configuration per page
-const seoConfigs: Record<PageView, { title: string; description: string }> = {
+const seoConfigs: Record<PageView, { title: string; description: string; ogTitle?: string; ogDescription?: string }> = {
   home: {
     title: 'DesignXFactor | Your Training Content Exists. We Make It Unforgettable.',
     description: 'We transform static corporate training into experiences learners actually remember. Custom design for YOUR audience — in weeks, not months. WCAG 2.1 AA compliant.',
+    ogTitle: 'DesignXFactor | Transform Your Corporate Training',
+    ogDescription: 'We transform static corporate training into experiences learners actually remember. Custom design in weeks, not months.',
   },
   'how-we-work': {
     title: 'How We Work | Interactive Process Experience | Design X Factor',
     description: 'Experience our 9-phase methodology firsthand. Step into the role of a client and see how we transform content into engaging learning experiences.',
+    ogTitle: 'How We Work | Design X Factor',
+    ogDescription: 'Experience our 9-phase methodology firsthand — from discovery to delivery.',
   },
   'thank-you': {
     title: 'Thank You | Design X Factor',
@@ -95,10 +99,27 @@ function App() {
 
     // Update canonical URL
     const canonicalPath = currentPage === 'home' ? '' : `#${currentPage}`;
+    const pageUrl = `https://designxfactor.com/${canonicalPath}`;
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-      canonicalLink.setAttribute('href', `https://designxfactor.com/${canonicalPath}`);
+      canonicalLink.setAttribute('href', pageUrl);
     }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogTitle) ogTitle.setAttribute('content', config.ogTitle || config.title);
+    if (ogDesc) ogDesc.setAttribute('content', config.ogDescription || config.description);
+    if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+
+    // Update Twitter tags
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    const twUrl = document.querySelector('meta[name="twitter:url"]');
+    if (twTitle) twTitle.setAttribute('content', config.ogTitle || config.title);
+    if (twDesc) twDesc.setAttribute('content', config.ogDescription || config.description);
+    if (twUrl) twUrl.setAttribute('content', pageUrl);
 
     // Announce route change to screen readers
     if (previousPage.current !== currentPage) {

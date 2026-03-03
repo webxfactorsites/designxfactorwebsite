@@ -144,7 +144,7 @@ export const ProblemStatement: React.FC = () => {
 
         <p
           ref={footerRef}
-          className="text-center text-slate-500 text-sm mt-12 transition-all duration-700"
+          className="text-center text-slate-400 text-sm mt-12 transition-all duration-700"
           style={{
             opacity: footerVisible ? 1 : 0,
             transform: footerVisible ? 'translateY(0)' : 'translateY(15px)',

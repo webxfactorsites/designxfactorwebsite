@@ -57,7 +57,7 @@ const BeforeFallback = ({ label }: { label: string }) => (
     <div className="w-16 h-16 bg-slate-800 rounded-xl flex items-center justify-center mb-4">
       <FileText size={24} className="text-slate-500" aria-hidden="true" />
     </div>
-    <p className="text-slate-500 text-sm">{label}</p>
+    <p className="text-slate-400 text-sm">{label}</p>
   </div>
 );
 
@@ -178,7 +178,7 @@ const TransformationCard: React.FC<{
         <span className="text-xs uppercase tracking-widest text-brand-blue font-bold">
           {item.industry}
         </span>
-        <span className="text-slate-500 mx-2">—</span>
+        <span className="text-slate-400 mx-2">—</span>
         <span className="text-sm text-slate-400">{item.title}</span>
       </div>
 

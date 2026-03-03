@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavProps> = ({ onNavigate, currentPage }) => {
           >
             <button
               onClick={() => handlePageClick('how-we-work')}
-              className={`text-left text-lg font-medium transition-colors ${
+              className={`text-left text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded px-2 py-1 ${
                 currentPage === 'how-we-work' ? 'text-white' : 'text-slate-200'
               }`}
             >
@@ -121,7 +121,7 @@ export const Navbar: React.FC<NavProps> = ({ onNavigate, currentPage }) => {
 
             <a
               href="#comparison"
-              className="text-slate-200 text-lg font-medium"
+              className="text-slate-200 text-lg font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded px-2 py-1"
               onClick={(e) => handleNavClick(e, 'comparison')}
             >
               Why Us
@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavProps> = ({ onNavigate, currentPage }) => {
 
             <a
               href="#contact"
-              className="bg-brand-red text-center text-white px-6 py-3 rounded-lg font-bold mt-2"
+              className="bg-brand-red text-center text-white px-6 py-3 rounded-lg font-bold mt-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 focus-visible:ring-offset-space"
               onClick={(e) => handleNavClick(e, 'contact')}
             >
               Let's Talk
