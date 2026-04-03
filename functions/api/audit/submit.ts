@@ -9,7 +9,9 @@
 
 interface Env {
   DB: D1Database;
-  COURSE_UPLOADS: R2Bucket;
+  CF_API_TOKEN: string;
+  CF_ACCOUNT_ID: string;
+  CF_R2_BUCKET_NAME: string;
   RESEND_API_KEY: string;
   NOTIFICATION_EMAIL: string;
   RESEND_FROM_EMAIL: string;
@@ -17,7 +19,7 @@ interface Env {
 }
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
-const FREE_AUDIT_LIMIT = 3; // max audits per email (non-failed jobs)
+const FREE_AUDIT_LIMIT = 2; // max audits per email (non-failed jobs)
 const ALLOWED_EXTENSIONS = ['.zip', '.pdf'];
 
 function nanoid(size = 21): string {
@@ -99,19 +101,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const safeFile = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
     const r2Key    = `uploads/${jobId}/${safeFile}`;
 
-    // ── Upload to R2 ──
+    // ── Upload to R2 via REST API ──
     const fileBuffer = await file.arrayBuffer();
-    await context.env.COURSE_UPLOADS.put(r2Key, fileBuffer, {
-      httpMetadata: {
-        contentType: file.type || 'application/octet-stream',
-        contentDisposition: `attachment; filename="${safeFile}"`,
+    const r2Base = `https://api.cloudflare.com/client/v4/accounts/${context.env.CF_ACCOUNT_ID}/r2/buckets/${context.env.CF_R2_BUCKET_NAME}`;
+    const r2Res = await fetch(`${r2Base}/objects/${encodeURIComponent(r2Key)}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${context.env.CF_API_TOKEN}`,
+        'Content-Type': file.type || 'application/octet-stream',
       },
-      customMetadata: {
-        jobId,
-        uploadedBy: email,
-        originalName: file.name,
-      },
+      body: fileBuffer,
     });
+    if (!r2Res.ok) {
+      const r2Err = await r2Res.text();
+      throw new Error(`R2 upload failed (${r2Res.status}): ${r2Err}`);
+    }
 
     // ── Insert job into D1 ──
     await context.env.DB.prepare(`
@@ -119,12 +123,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
     `).bind(jobId, name, email, company, role, courseType, file.name, r2Key, file.size).run();
 
-    // ── Notify internally ──
-    await notifyInternal(context.env, {
-      jobId, name, email, company, role, courseType,
-      fileName: file.name, fileSize: file.size,
-      auditNumber: usedCount + 1,
-    });
+    // ── Notify internally + confirm to user (fire-and-forget) ──
+    await Promise.all([
+      notifyInternal(context.env, {
+        jobId, name, email, company, role, courseType,
+        fileName: file.name, fileSize: file.size,
+        auditNumber: usedCount + 1,
+      }),
+      confirmToUser(context.env, { name, email, fileName: file.name }),
+    ]);
 
     return new Response(JSON.stringify({
       success: true,
@@ -135,7 +142,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
   } catch (err) {
     console.error('audit/submit error:', err);
-    return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500, headers });
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('audit/submit error:', msg);
+    return new Response(JSON.stringify({ error: 'Internal server error', detail: msg }), { status: 500, headers });
   }
 };
 
@@ -176,5 +185,44 @@ async function notifyInternal(env: Env, data: {
     });
   } catch (e) {
     console.error('Failed to send internal notification:', e);
+  }
+}
+
+async function confirmToUser(env: Env, data: { name: string; email: string; fileName: string }) {
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: env.RESEND_FROM_EMAIL,
+        to: [data.email],
+        subject: `Your Course Audit Has Been Received — Design × Factor`,
+        html: `
+          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1e293b">
+            <div style="background:#0f172a;padding:24px 32px;border-radius:8px 8px 0 0">
+              <h1 style="margin:0;font-size:20px;color:#ffffff;font-weight:600">Design × Factor</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#94a3b8">Instructional Design &amp; Development</p>
+            </div>
+            <div style="background:#f8fafc;padding:32px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px">
+              <p style="margin:0 0 16px;font-size:16px">Hi ${data.name},</p>
+              <p style="margin:0 0 16px">We've received your course audit submission for <strong>${data.fileName}</strong> and it's now in our processing queue.</p>
+              <p style="margin:0 0 16px">Here's what happens next:</p>
+              <ol style="margin:0 0 24px;padding-left:20px;line-height:1.8">
+                <li>Our system will analyze your course content against accessibility, instructional design, and content quality standards.</li>
+                <li>You'll receive a second email with a link to your full audit report — typically within <strong>24 hours</strong>.</li>
+                <li>The report link will remain active until the file is permanently deleted (within 24 hours of delivery).</li>
+              </ol>
+              <p style="margin:0 0 24px">If you have any questions in the meantime, feel free to reach out through our <a href="${env.WEBSITE_URL}/#contact" style="color:#6366f1">contact form</a>.</p>
+              <p style="margin:0">Thank you for trusting us with your course,<br><strong>The Design × Factor Team</strong></p>
+            </div>
+            <p style="text-align:center;font-size:11px;color:#94a3b8;margin:16px 0 0">
+              &copy; ${new Date().getFullYear()} Design × Factor · <a href="${env.WEBSITE_URL}" style="color:#94a3b8">${env.WEBSITE_URL.replace('https://', '')}</a>
+            </p>
+          </div>
+        `,
+      }),
+    });
+  } catch (e) {
+    console.error('Failed to send user confirmation:', e);
   }
 }

@@ -33,9 +33,9 @@ const seoConfigs: Record<PageView, { title: string; description: string; ogTitle
     description: 'Thank you for contacting Design X Factor.',
   },
   'course-audit': {
-    title: 'Free Course Audit | IDDFX | Design X Factor',
+    title: 'Free Course Audit | IDDXF | Design X Factor',
     description: 'Upload your SCORM, Common Cartridge, or PDF and get a free evidence-based instructional design audit delivered to your inbox.',
-    ogTitle: 'Free IDDFX Course Audit | Design X Factor',
+    ogTitle: 'Free IDDXF Course Audit | Design X Factor',
     ogDescription: 'Get a free quality score, Bloom\'s analysis, accessibility review, and actionable recommendations for your course — in minutes.',
   },
   terms: {
@@ -84,7 +84,11 @@ function App() {
       if (validPages.includes(hash as PageView)) {
         setCurrentPage(hash as PageView);
       } else {
+        // Section anchor on home page (e.g. #contact) — navigate home then scroll
         setCurrentPage('home');
+        setTimeout(() => {
+          document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
       }
     };
 

@@ -2,7 +2,7 @@ import { useCourseAudit } from '../../context/CourseAuditContext';
 
 const WHAT_YOU_GET = [
   { icon: '🎯', title: 'Objectives Review', desc: "Bloom's taxonomy analysis — are your learning objectives measurable and at the right cognitive level?" },
-  { icon: '📊', title: 'IDDFX Quality Score', desc: 'A 0–100 score against Quality Matters standards and Community of Inquiry framework.' },
+  { icon: '📊', title: 'IDDXF Quality Score', desc: 'A 0–100 score across 6 dimensions: objectives, assessments, content depth, accessibility, engagement, and design consistency.' },
   { icon: '🔍', title: 'Assessment Alignment', desc: "Are your assessments testing what your objectives promise? We'll find the gaps." },
   { icon: '♿', title: 'Accessibility Check', desc: 'WCAG 2.1 AA compliance review — is your course legally accessible?' },
   { icon: '🚩', title: 'Red Flag Report', desc: "Adversarial audit — we assume your course is broken until proven otherwise. No sugar-coating." },
@@ -23,18 +23,23 @@ export function AuditLanding() {
 
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
           Get a Free{' '}
-          <span className="text-[#00d4ff]">IDDFX Course Audit</span>
+          <span className="text-[#00d4ff]">Course Audit</span>
         </h1>
 
-        <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-6">
+        <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-4">
           Upload your SCORM package, Common Cartridge, or PDF. We run a full
           evidence-based instructional design analysis and email you a detailed report —
           no login, no credit card.
         </p>
 
+        <p className="text-sm text-slate-400 max-w-xl mx-auto mb-6 bg-white/5 border border-white/10 rounded-lg px-4 py-3">
+          <strong className="text-white">What is the IDDXF score?</strong>{' '}
+          IDDXF (Instructional Design Design × Factor) is our proprietary scoring framework — a 0–100 rating that benchmarks your course across objectives, assessments, content depth, accessibility, engagement patterns, and design consistency.
+        </p>
+
         <p className="text-sm text-slate-500 mb-8">
-          Up to 3 free audits per email address.{' '}
-          <a href="#contact" className="text-slate-400 hover:text-[#00d4ff] underline underline-offset-2 transition-colors">
+          Up to 2 free audits per email address.{' '}
+          <a href="/#contact" className="text-slate-400 hover:text-[#00d4ff] underline underline-offset-2 transition-colors">
             Need more? Let's talk.
           </a>
         </p>
