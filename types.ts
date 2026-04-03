@@ -27,7 +27,7 @@ export interface LayerContent {
 }
 
 // Simplified navigation - focused on core training message
-export type PageView = 'home' | 'how-we-work' | 'terms' | 'privacy' | 'thank-you';
+export type PageView = 'home' | 'how-we-work' | 'terms' | 'privacy' | 'thank-you' | 'course-audit';
 
 export interface NavProps {
   onNavigate: (page: PageView) => void;

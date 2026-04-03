@@ -12,3 +12,9 @@ WEBSITE_URL = "https://designxfactor.com"
 binding = "DB"
 database_name = "dxf-leads"
 database_id = "774b5258-b6da-45ba-a3b0-9372c96cbc0c"
+
+# Course Audit uploads bucket
+# Create with: wrangler r2 bucket create dxf-course-audits
+[[r2_buckets]]
+binding = "COURSE_UPLOADS"
+bucket_name = "dxf-course-audits"

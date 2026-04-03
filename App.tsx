@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { Legal } from './pages/Legal';
 import { ThankYou } from './pages/ThankYou';
 import { HowWeWork } from './pages/HowWeWork';
+import { CourseAudit } from './pages/courseaudit/CourseAudit';
 import { PageView } from './types';
 
 // SEO Configuration per page
@@ -31,6 +32,12 @@ const seoConfigs: Record<PageView, { title: string; description: string; ogTitle
     title: 'Thank You | Design X Factor',
     description: 'Thank you for contacting Design X Factor.',
   },
+  'course-audit': {
+    title: 'Free Course Audit | IDDFX | Design X Factor',
+    description: 'Upload your SCORM, Common Cartridge, or PDF and get a free evidence-based instructional design audit delivered to your inbox.',
+    ogTitle: 'Free IDDFX Course Audit | Design X Factor',
+    ogDescription: 'Get a free quality score, Bloom\'s analysis, accessibility review, and actionable recommendations for your course — in minutes.',
+  },
   terms: {
     title: 'Terms of Service | Design X Factor',
     description: 'Terms of Service for Design X Factor learning experience design services.',
@@ -48,6 +55,7 @@ const pageTitles: Record<PageView, string> = {
   'thank-you': 'Thank you',
   terms: 'Terms of Service',
   privacy: 'Privacy Policy',
+  'course-audit': 'Free Course Audit',
 };
 
 function App() {
@@ -70,6 +78,7 @@ function App() {
         'thank-you',
         'terms',
         'privacy',
+        'course-audit',
       ];
 
       if (validPages.includes(hash as PageView)) {
@@ -163,6 +172,8 @@ function App() {
         return <HowWeWork onNavigate={handleNavigate} />;
       case 'thank-you':
         return <ThankYou onNavigate={handleNavigate} />;
+      case 'course-audit':
+        return <CourseAudit />;
       case 'terms':
       case 'privacy':
         return <Legal page={currentPage} />;
